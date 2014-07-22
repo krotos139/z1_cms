@@ -1,0 +1,61 @@
+{% extends "z1_cms/base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+Krotos139 - Категория - {{ category_current.name }}
+{% endblock %}
+
+{% block navigation %}
+{% if mainmenu_list %}
+        <ul class="left">
+        {% for item in mainmenu_list %}
+          <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+        {% endfor %}
+        </ul>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h1>{{ category_current.name }}</h1>
+			<p>{{ category_current.description }}</p>
+		</div>
+	</div>
+
+	<!-- Categories -->
+        {% for category in category_list %}
+	<div class="row">
+		<div class="large-2 columns small-3"><img src="{% static "img/category.svg" %}" /></div>
+		<div class="large-10 columns">
+			<a href="{$ url "z1_cms:category" category_id=category.id %}"><h4>{{ category.name }}</h4></a> 
+			<p>{{ category.description }}</p>
+			{%with category_list=category.chields template_name="cms/category_p_tree.html" %}
+				{%include template_name%}
+			{%endwith%}
+		</div>
+	</div>
+	{%endfor%}
+	<!-- End Categories -->
+
+	<!-- Entityes -->
+        {% for entity in entity_list %}
+	<div class="row">
+		<div class="large-2 columns small-3"><img src="{% static "img/entity.svg" %}" /></div>
+		<div class="large-10 columns">
+			<a href="{% url "z1_cms:entity" entity_id=entity.id %}"><h4>{{ entity.name }}</h4></a> 
+			<p>{{ entity.description }}</p>
+		</div>
+	</div>
+	{% empty %}
+	<div data-alert class="alert-box warning round">
+		В выбраной категории записей не найдено
+		<a href="#" class="close">&times;</a>
+	</div>
+	{%endfor%}
+	<!-- End Entityes -->
+
+
+{% endblock %}
+

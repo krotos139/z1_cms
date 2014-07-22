@@ -1,0 +1,148 @@
+{% extends "z1_cms/base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+Krotos139 - Список категорий
+{% endblock %}
+
+{% block navigation %}
+{% if mainmenu_list %}
+        <ul class="left">
+        {% for item in mainmenu_list %}
+          <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+        {% endfor %}
+        </ul>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h1>Категории контента сайта</h1>
+			<p>На этом сайте предусмотрено несколько видов категорий общего и специального назначения</p>
+		</div>
+	</div>
+
+	<!-- Mainpage -->
+	<div class="row">
+		<div class="large-2 columns small-3"><img src="{% static "img/_mainpage.svg" %}" /></div>
+		<div class="large-10 columns">
+			<h2>Главная страница</h2>
+			<p> Категории контента располагаемого на главной страницы.</p>
+
+		{% if mainpage_list %}
+			{% with category_list=mainpage_list template_name="cms/category_p_tree.html" %}
+				{%include template_name%}
+			{%endwith%}
+		{% else %}
+			<div data-alert class="alert-box warning round">
+				Категорий такого типа не найдено
+				<a href="#" class="close">&times;</a>
+			</div>
+
+		{% endif %}
+ 
+		</div>
+		<div><hr/></div>
+	</div>
+	<!-- End Mainpage -->
+
+	<!-- Page -->
+	<div class="row">
+		<div class="large-2 columns small-3"><img src="{% static "img/_page.svg" %}" /></div>
+		<div class="large-10 columns">
+			<h2>Страницы сайта</h2>
+			<p>Категории контента располагаемого на сайте с виде условно статических страниц.</p>
+
+		{% if page_list %}
+			{% with category_list=page_list template_name="cms/category_p_tree.html" %}
+				{%include template_name%}
+			{%endwith%}
+		{% else %}
+			<div data-alert class="alert-box warning round">
+				Категорий такого типа не найдено
+				<a href="#" class="close">&times;</a>
+			</div>
+
+		{% endif %}
+ 
+		</div>
+		<div><hr/></div>
+	</div>
+	<!-- End Page -->
+
+	<!-- Articles -->
+	<div class="row">
+		<div class="large-2 columns small-3"><img src="{% static "img/_article.svg" %}" /></div>
+		<div class="large-10 columns">
+			<h2>Статьи</h2>
+			<p>Категории статей.</p>
+
+		{% if article_list %}
+			{% with category_list=article_list template_name="cms/category_p_tree.html" %}
+				{%include template_name%}
+			{%endwith%}
+		{% else %}
+			<div data-alert class="alert-box warning round">
+				Категорий такого типа не найдено
+				<a href="#" class="close">&times;</a>
+			</div>
+
+		{% endif %}
+ 
+		</div>
+		<div><hr/></div>
+	</div>
+	<!-- End Articles -->
+
+	<!-- Blog -->
+	<div class="row">
+		<div class="large-2 columns small-3"><img src="{% static "img/_blog.svg" %}" /></div>
+		<div class="large-10 columns">
+			<h2>Блоги</h2>
+			<p>Блоги сайта.</p>
+
+		{% if blog_list %}
+			{% with category_list=blog_list template_name="cms/category_p_tree.html" %}
+				{%include template_name%}
+			{%endwith%}
+		{% else %}
+			<div data-alert class="alert-box warning round">
+				Категорий такого типа не найдено
+				<a href="#" class="close">&times;</a>
+			</div>
+
+		{% endif %}
+ 
+		</div>
+		<div><hr/></div>
+	</div>
+	<!-- End Blog -->
+
+	<!-- Forum -->
+	<div class="row">
+		<div class="large-2 columns small-3"><img src="{% static "img/_forum.svg" %}" /></div>
+		<div class="large-10 columns">
+			<h2>Форумы</h2>
+			<p>Форумы сайта.</p>
+
+		{% if forum_list %}
+			{% with category_list=forum_list template_name="cms/category_p_tree.html" %}
+				{%include template_name%}
+			{%endwith%}
+		{% else %}
+			<div data-alert class="alert-box warning round">
+				Категорий такого типа не найдено
+				<a href="#" class="close">&times;</a>
+			</div>
+
+		{% endif %}
+ 
+		</div>
+		<div><hr/></div>
+	</div>
+	<!-- End Forum -->
+
+{% endblock %}
+

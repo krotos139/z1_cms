@@ -1,0 +1,65 @@
+{% extends "z1_cms/base.html" %}
+{% load staticfiles %}
+{% block title %}
+Krotos139 - Главная страница
+{% endblock %}
+
+{% block navigation %}
+{% if mainmenu_list %}
+	<ul class="left">
+	{% for item in mainmenu_list %}
+		<li><a href="{{ item.url }}">{{ item.name }}</a></li>
+	{% endfor %}
+	</ul>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if entity_list %}
+	{% for entity in entity_list %}
+	<div class="row">
+		<div class="large-12 columns">
+			<a name="{% url 'z1_cms:entity' entity_id=entity.id %}" ><h3>{{ entity.name }}</h3></a>
+			<span class="label">{{ entity.category.name }}</span>
+			<p>{{ entity.content|safe }}</p>
+			<span class="radius secondary label">{{ entity.author }} / {{ entity.pub_date }}</span>
+			<hr/>
+		</div>
+	</div>
+	{% endfor %}
+
+	<div class="row"><div class="large-2 columns">
+		<ul class="pagination">
+			{% if entity_list.has_previous %}
+				<li class="arrow"><a href="?page={{ entity_list.previous_page_number }}">&laquo;</a></li>
+			{% else %}
+				<li class="arrow unavailable"><a href="">&laquo;</a></li>
+			{% endif %}
+			<span class="current">
+				<li class="current"><a>{{ entity_list.number }} / {{ entity_list.paginator.num_pages }}</a></li>
+			</span>
+			{% if entity_list.has_next %}
+				<li class="arrow"><a href="?page={{ entity_list.next_page_number }}">&raquo;</a></li>
+			{% else %}
+				<li class="arrow unavailable""><a href="">&raquo;</a></li>
+			{% endif %}
+		</ul>
+	</div><div class="large-4 columns">
+
+		<a href="{% url 'z1_cms:index_rss' %}"><img src="{% static "img/rss_icon.png" %}"></a>
+	</div></div>
+
+
+{% else %}
+	<div class="row">
+		<div class="large-12 columns">
+			<div class="panel">
+				<p>Нет данных для отображения</p>
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+{% endblock %}
+

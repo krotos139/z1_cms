@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+{% for category in category_list %}
+	<div class="row">
+		<div class="large-2 columns small-3"><img src="{% static "img/category.svg" %}" /></div>
+		<div class="large-10 columns">
+			<a href="/category/{{ category.id }}"><h4>{{ category.name }}</h4></a> 
+			<p>{{ category.description }}</p>
+			{%with category_list=category.chields template_name="cms/category_p_tree.html" %}
+				{%include template_name%}
+			{%endwith%}
+		</div>
+	</div>
+{%endfor%}
+
