@@ -1,6 +1,6 @@
 from django.contrib import admin
 from datetime import datetime
-from cms.models import Category,Entity,MainMenu
+from z1_cms.models import Category,Entity,MainMenu
 from filebrowser.sites import FileBrowserSite
 
 # Register your models here.

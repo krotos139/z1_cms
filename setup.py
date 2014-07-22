@@ -1,4 +1,4 @@
-mport os
+import os
 from setuptools import setup
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='z1_cms',
     version='0.1',
-    packages=['cms'],
+    packages=['z1_cms'],
     include_package_data=True,
     license='GPL v3',
     description='A simple Django app to conduct Web-based content.',

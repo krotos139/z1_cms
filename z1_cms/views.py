@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
-from cms.models import Entity,Category,CategoryTypes,MainMenu
+from z1_cms.models import Entity,Category,CategoryTypes,MainMenu
 
 # Create your views here.
 
@@ -26,7 +26,7 @@ def index(request):
 		entity_list = paginator.page(paginator.num_pages)
 
 	context = {'mainmenu_list': mainmenu_list, 'entity_list': entity_list}
-	return render(request, 'cms/index.html', context)
+	return render(request, 'z1_cms/index.html', context)
 
 class index_rss(Feed):
     title = "Krotos139"
@@ -43,7 +43,7 @@ class index_rss(Feed):
         return item.content
 
     def item_link(self, item):
-        return reverse('cms:entity', kwargs={'entity_id':item.id})
+        return reverse('z1_cms:entity', kwargs={'entity_id':item.id})
 
 def category_load(type, parrent):
     if parrent!=0:
@@ -63,7 +63,7 @@ def category_list(request):
     blog_list = Category.objects.filter(type=CategoryTypes.blog)
     forum_list = Category.objects.filter(type=CategoryTypes.forum)
     context = {'mainmenu_list': mainmenu_list, 'mainpage_list':mainpage_list, 'page_list': page_list, 'article_list':article_list, 'blog_list':blog_list, 'forum_list':forum_list }
-    return render(request, 'cms/category_list.html', context)
+    return render(request, 'z1_cms/category_list.html', context)
 
 def entity_list(request, category_id):
     mainmenu_list = MainMenu.objects.all()
@@ -72,13 +72,13 @@ def entity_list(request, category_id):
     category_list = Category.objects.filter(parrent=category_id)
     entity_list = Entity.objects.filter(category=category_id)
     context = {'mainmenu_list': mainmenu_list, 'category_current': category_current, 'category_list': category_list, 'entity_list': entity_list}
-    return render(request, 'cms/entity_list.html', context)
+    return render(request, 'z1_cms/entity_list.html', context)
 
 def entity(request, entity_id):
     mainmenu_list = MainMenu.objects.all()
 
     entity = Entity.objects.get(id=entity_id)
     context = {'mainmenu_list': mainmenu_list, 'entity': entity}
-    return render(request, 'cms/entity.html', context)
+    return render(request, 'z1_cms/entity.html', context)
 
 

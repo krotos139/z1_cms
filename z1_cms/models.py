@@ -2,7 +2,6 @@ from django.utils.translation import ugettext as _
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-from filebrowser.fields import FileBrowseField
 from tagging.fields import TagField
 from ckeditor.fields import RichTextField
 

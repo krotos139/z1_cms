@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, url
-from cms.views import index_rss
-
-from cms import views
+from z1_cms.views import index_rss
+from z1_cms import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
