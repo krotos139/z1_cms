@@ -32,7 +32,7 @@ Krotos139 - Список категорий
 			<p> Категории контента располагаемого на главной страницы.</p>
 
 		{% if mainpage_list %}
-			{% with category_list=mainpage_list template_name="cms/category_p_tree.html" %}
+			{% with category_list=mainpage_list template_name="z1_cms/category_p_tree.html" %}
 				{%include template_name%}
 			{%endwith%}
 		{% else %}
@@ -56,7 +56,7 @@ Krotos139 - Список категорий
 			<p>Категории контента располагаемого на сайте с виде условно статических страниц.</p>
 
 		{% if page_list %}
-			{% with category_list=page_list template_name="cms/category_p_tree.html" %}
+			{% with category_list=page_list template_name="z1_cms/category_p_tree.html" %}
 				{%include template_name%}
 			{%endwith%}
 		{% else %}
@@ -80,7 +80,7 @@ Krotos139 - Список категорий
 			<p>Категории статей.</p>
 
 		{% if article_list %}
-			{% with category_list=article_list template_name="cms/category_p_tree.html" %}
+			{% with category_list=article_list template_name="z1_cms/category_p_tree.html" %}
 				{%include template_name%}
 			{%endwith%}
 		{% else %}
@@ -104,7 +104,7 @@ Krotos139 - Список категорий
 			<p>Блоги сайта.</p>
 
 		{% if blog_list %}
-			{% with category_list=blog_list template_name="cms/category_p_tree.html" %}
+			{% with category_list=blog_list template_name="z1_cms/category_p_tree.html" %}
 				{%include template_name%}
 			{%endwith%}
 		{% else %}
@@ -128,7 +128,7 @@ Krotos139 - Список категорий
 			<p>Форумы сайта.</p>
 
 		{% if forum_list %}
-			{% with category_list=forum_list template_name="cms/category_p_tree.html" %}
+			{% with category_list=forum_list template_name="z1_cms/category_p_tree.html" %}
 				{%include template_name%}
 			{%endwith%}
 		{% else %}

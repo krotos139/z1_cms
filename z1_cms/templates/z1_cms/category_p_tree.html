@@ -6,7 +6,7 @@
 		<div class="large-10 columns">
 			<a href="/category/{{ category.id }}"><h4>{{ category.name }}</h4></a> 
 			<p>{{ category.description }}</p>
-			{%with category_list=category.chields template_name="cms/category_p_tree.html" %}
+			{%with category_list=category.chields template_name="z1_cms/category_p_tree.html" %}
 				{%include template_name%}
 			{%endwith%}
 		</div>

@@ -40,5 +40,20 @@ urlpatterns = patterns('',
 
 6. Зайдите по адресу http://127.0.0.1:8000/z1_cms/ для просмотра содержимого.
 
+Перенос данных
+==============
 
+Экспортируйте контент в XML файлы из существующего Django проекта
+```
+python manage.py dumpdata --format=xml z1_cms.MainMenu > z1_cms.MainMenu.xml
+python manage.py dumpdata --format=xml z1_cms.Category > z1_cms.Category.xml
+python manage.py dumpdata --format=xml z1_cms.Entity > z1_cms.Entity.xml
+```
+
+Импортируйте в новый
+```
+python manage.py loaddata  z1_cms.MainMenu.xml
+python manage.py loaddata  z1_cms.Category.xml
+python manage.py loaddata  z1_cms.Entity.xml
+```
 
